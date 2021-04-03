@@ -13,6 +13,13 @@ var ingredienti = document.getElementsByClassName('ingredient-checkbox');
 //creiamo una variabile che abbia lo scopo di mandare il prezzo completo sulla nostra app
 var prezzoDisplay = document.getElementById('price');
 
+//creiamo una variabile per il coupon
+var coupon = document.getElementById('coupon');
+
+
+//creiamo un array con all'interno i nostri codici sconto
+var coupons = ['12345QWERT', '56789ASDF', '123ZXC456']
+
 
 /**
  * CALCOLO PREZZO
@@ -52,6 +59,21 @@ btn.addEventListener('click', function() {
         //controlliamo il prezzo finale inserendo il log dopo il for
         //console.log(prezzo);
 
+
+        //3. Coupon
+        
+        var codiceCoupon = coupon.value;
+        //console.log(codiceCoupon);
+
+        //tramite un if e la proprietà '.includes' controlliamo se il nostro codice è, appunto, inserito all'interno del nostro array di coupon
+        if (coupons.includes(codiceCoupon) ) {
+            console.log('Coupon valido, sconto applicato');
+
+            //20% di sconto
+            prezzo -= prezzo * 0.2;
+        } else {
+            console.log('Codice non valido');
+        }
 
         //2. stampiamo il prezzo dentro la nostra "app" prendendo la var che abbiamo precedentemente creato
         prezzoDisplay.innerHTML = prezzo.toFixed(2); //usiamo il toFixed(2) per inserire i primi due numeri decimali dopo la virgola
