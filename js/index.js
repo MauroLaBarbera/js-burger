@@ -21,6 +21,33 @@ var coupon = document.getElementById('coupon');
 var coupons = ['12345QWERT', '56789ASDF', '123ZXC456']
 
 
+//creiamo una var di referenza associata agli 'add' tramite la loro classe e non l'id 
+var addBtn = document.getElementsByClassName('ingredient-add'); 
+console.log(addBtn);
+
+
+
+/**
+ * 4. ADD CLICCABILI
+ */
+for (var i = 0; i < addBtn.length; i++) {
+     var add = addBtn[i]; //prendiamo l'add attuale contenuto dentro l'addBtn tramite [i]
+
+     add.addEventListener('click', function(){
+        console.log('Click!');
+        console.log(this);  //elemento che ho cliccato
+        console.log(this.previousElementSibling);  //elemento che ho cliccato
+
+        var thisCheckbox = this.previousElementSibling;
+        thisCheckbox.checked = ! thisCheckbox.checked;
+     });
+
+}
+
+
+
+
+
 /**
  * CALCOLO PREZZO
  */
